@@ -1,0 +1,48 @@
+Apr 08, 2025 11:31:24 PM liquibase.changelog
+INFO: Reading resource: db/changelog/migrations/db.changelog-202504082221.sql
+Apr 08, 2025 11:31:24 PM liquibase.changelog
+INFO: Reading resource: db/changelog/migrations/db.changelog-202504082250.sql
+Apr 08, 2025 11:31:24 PM liquibase.changelog
+INFO: Reading resource: db/changelog/migrations/db.changelog-202504082332.sql
+Apr 08, 2025 11:31:25 PM liquibase.changelog
+INFO: Reading from board_db.DATABASECHANGELOG
+Apr 08, 2025 11:31:25 PM liquibase.lockservice
+INFO: Successfully acquired change log lock
+Apr 08, 2025 11:31:25 PM liquibase.command
+INFO: Using deploymentId: 4165885129
+Apr 08, 2025 11:31:25 PM liquibase.changelog
+INFO: Reading from board_db.DATABASECHANGELOG
+Running Changeset: db/changelog/migrations/db.changelog-202504082332.sql::202504082332::Cantuario2
+Apr 08, 2025 11:31:25 PM liquibase.changelog
+INFO: Custom SQL executed
+Apr 08, 2025 11:31:25 PM liquibase.changelog
+INFO: ChangeSet db/changelog/migrations/db.changelog-202504082332.sql::202504082332::Cantuario2 ran successfully in 52ms
+
+UPDATE SUMMARY
+Run:                          1
+Previously run:               2
+Filtered out:                 0
+-------------------------------
+Total change sets:            3
+
+Apr 08, 2025 11:31:25 PM liquibase.util
+INFO: UPDATE SUMMARY
+Apr 08, 2025 11:31:25 PM liquibase.util
+INFO: Run:                          1
+Apr 08, 2025 11:31:25 PM liquibase.util
+INFO: Previously run:               2
+Apr 08, 2025 11:31:25 PM liquibase.util
+INFO: Filtered out:                 0
+Apr 08, 2025 11:31:25 PM liquibase.util
+INFO: -------------------------------
+Apr 08, 2025 11:31:25 PM liquibase.util
+INFO: Total change sets:            3
+Apr 08, 2025 11:31:25 PM liquibase.util
+INFO: Update summary generated
+Apr 08, 2025 11:31:25 PM liquibase.command
+INFO: Update command completed successfully.
+Liquibase: Update has been successful. Rows affected: 3
+Apr 08, 2025 11:31:25 PM liquibase.lockservice
+INFO: Successfully released change log lock
+Apr 08, 2025 11:31:25 PM liquibase.command
+INFO: Command execution complete
