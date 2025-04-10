@@ -9,9 +9,11 @@ import lombok.AllArgsConstructor;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Logger;
 
 @AllArgsConstructor
 public class BoardService {
+    private static final Logger logger = Logger.getLogger(BoardService.class.getName());
     private final Connection conn;
 
     public BoardEntity insert(final BoardEntity board) throws SQLException {
@@ -27,7 +29,8 @@ public class BoardService {
             }
         } catch (SQLException e) {
             conn.rollback();
-            throw e;
+            logger.severe(String.format("Error in %s - %s:", this.getClass().getName(), "insert method"));
+            logger.severe(e.toString());
         }
         return board;
     }
@@ -43,7 +46,9 @@ public class BoardService {
             return true;
         } catch (SQLException e) {
             conn.rollback();
-            throw e;
+            logger.severe(String.format("Error in %s - %s:", this.getClass().getName(), "delete method"));
+            logger.severe(e.toString());
         }
+        return false;
     }
 }

@@ -8,12 +8,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @AllArgsConstructor
 public class BoardDAO {
+    private static final Logger logger = Logger.getLogger(BoardDAO.class.getName());
+
     private final Connection conn;
 
-    public BoardEntity insert(final BoardEntity board) throws SQLException {
+    public void insert(final BoardEntity board) throws SQLException {
         try (
                 PreparedStatement statement = conn.prepareStatement(
                         "INSERT INTO BOARDS (name) VALUES (?)"
@@ -24,11 +27,10 @@ public class BoardDAO {
             if (statement instanceof StatementImpl impl) {
                 board.setId(impl.getLastInsertID());
             }
-            return board;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.severe(String.format("Error in %s - %s:", this.getClass().getName(), "insert method"));
+            logger.severe(e.toString());
         }
-        return null;
     }
 
     public void delete(final Long id) throws SQLException {
@@ -40,7 +42,8 @@ public class BoardDAO {
             statement.setLong(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.severe(String.format("Error in %s - %s:", this.getClass().getName(), "delete method"));
+            logger.severe(e.toString());
         }
     }
 
@@ -61,7 +64,8 @@ public class BoardDAO {
             }
             return Optional.empty();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.severe(String.format("Error in %s - %s:", this.getClass().getName(), "findById method"));
+            logger.severe(e.toString());
         }
         return null;
     }
@@ -77,7 +81,8 @@ public class BoardDAO {
             statement.executeQuery();
             return statement.getResultSet().next();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.severe(String.format("Error in %s - %s:", this.getClass().getName(), "exists method"));
+            logger.severe(e.toString());
         }
         return false;
     }

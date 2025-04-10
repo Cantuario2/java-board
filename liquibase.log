@@ -1,64 +1,83 @@
-Apr 09, 2025 5:04:31 PM liquibase.changelog
+Apr 10, 2025 12:20:18 AM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202504082221.sql
-Apr 09, 2025 5:04:31 PM liquibase.changelog
+Apr 10, 2025 12:20:19 AM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202504082250.sql
-Apr 09, 2025 5:04:31 PM liquibase.changelog
+Apr 10, 2025 12:20:19 AM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202504082332.sql
-Apr 09, 2025 5:04:31 PM liquibase.changelog
+Apr 10, 2025 12:20:19 AM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202504091641.sql
-Apr 09, 2025 5:04:31 PM liquibase.changelog
+Apr 10, 2025 12:20:19 AM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202504091654.sql
-Apr 09, 2025 5:04:31 PM liquibase.changelog
+Apr 10, 2025 12:20:19 AM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202504091657.sql
-Apr 09, 2025 5:04:31 PM liquibase.changelog
+Apr 10, 2025 12:20:19 AM liquibase.changelog
+INFO: Creating database history table with name: board_db.DATABASECHANGELOG
+Apr 10, 2025 12:20:19 AM liquibase.changelog
 INFO: Reading from board_db.DATABASECHANGELOG
-Apr 09, 2025 5:04:31 PM liquibase.lockservice
+Apr 10, 2025 12:20:19 AM liquibase.lockservice
 INFO: Successfully acquired change log lock
-Apr 09, 2025 5:04:31 PM liquibase.command
-INFO: Using deploymentId: 4229071868
-Apr 09, 2025 5:04:31 PM liquibase.changelog
+Apr 10, 2025 12:20:19 AM liquibase.command
+INFO: Using deploymentId: 4255219243
+Apr 10, 2025 12:20:19 AM liquibase.changelog
 INFO: Reading from board_db.DATABASECHANGELOG
+Running Changeset: db/changelog/migrations/db.changelog-202504082221.sql::202504082221::Cantuario2
+Apr 10, 2025 12:20:19 AM liquibase.changelog
+INFO: Custom SQL executed
+Apr 10, 2025 12:20:19 AM liquibase.changelog
+INFO: ChangeSet db/changelog/migrations/db.changelog-202504082221.sql::202504082221::Cantuario2 ran successfully in 28ms
+Running Changeset: db/changelog/migrations/db.changelog-202504082250.sql::202504082250::Cantuario2
+Apr 10, 2025 12:20:19 AM liquibase.changelog
+INFO: Custom SQL executed
+Apr 10, 2025 12:20:19 AM liquibase.changelog
+INFO: ChangeSet db/changelog/migrations/db.changelog-202504082250.sql::202504082250::Cantuario2 ran successfully in 32ms
+Running Changeset: db/changelog/migrations/db.changelog-202504082332.sql::202504082332::Cantuario2
+Apr 10, 2025 12:20:19 AM liquibase.executor
+WARNING: Table 'tbl_ver' already exists
+Apr 10, 2025 12:20:19 AM liquibase.changelog
+INFO: Custom SQL executed
+Apr 10, 2025 12:20:19 AM liquibase.changelog
+INFO: ChangeSet db/changelog/migrations/db.changelog-202504082332.sql::202504082332::Cantuario2 ran successfully in 18ms
 Running Changeset: db/changelog/migrations/db.changelog-202504091641.sql::202504091641::Cantuario2
-Apr 09, 2025 5:04:31 PM liquibase.changelog
+Apr 10, 2025 12:20:19 AM liquibase.changelog
 INFO: Custom SQL executed
-Apr 09, 2025 5:04:31 PM liquibase.changelog
-INFO: ChangeSet db/changelog/migrations/db.changelog-202504091641.sql::202504091641::Cantuario2 ran successfully in 35ms
+Apr 10, 2025 12:20:19 AM liquibase.changelog
+INFO: ChangeSet db/changelog/migrations/db.changelog-202504091641.sql::202504091641::Cantuario2 ran successfully in 22ms
 Running Changeset: db/changelog/migrations/db.changelog-202504091654.sql::202504091641::Cantuario2
-Apr 09, 2025 5:04:31 PM liquibase.changelog
+Apr 10, 2025 12:20:19 AM liquibase.changelog
 INFO: Custom SQL executed
-Apr 09, 2025 5:04:31 PM liquibase.changelog
+Apr 10, 2025 12:20:19 AM liquibase.changelog
 INFO: ChangeSet db/changelog/migrations/db.changelog-202504091654.sql::202504091641::Cantuario2 ran successfully in 25ms
 Running Changeset: db/changelog/migrations/db.changelog-202504091657.sql::202504091641::Cantuario2
-Apr 09, 2025 5:04:31 PM liquibase.changelog
+Apr 10, 2025 12:20:19 AM liquibase.changelog
 INFO: Custom SQL executed
-Apr 09, 2025 5:04:31 PM liquibase.changelog
-INFO: ChangeSet db/changelog/migrations/db.changelog-202504091657.sql::202504091641::Cantuario2 ran successfully in 27ms
+Apr 10, 2025 12:20:19 AM liquibase.changelog
+INFO: ChangeSet db/changelog/migrations/db.changelog-202504091657.sql::202504091641::Cantuario2 ran successfully in 24ms
 
 UPDATE SUMMARY
-Run:                          3
-Previously run:               3
+Run:                          6
+Previously run:               0
 Filtered out:                 0
 -------------------------------
 Total change sets:            6
 
-Apr 09, 2025 5:04:31 PM liquibase.util
+Apr 10, 2025 12:20:19 AM liquibase.util
 INFO: UPDATE SUMMARY
-Apr 09, 2025 5:04:31 PM liquibase.util
-INFO: Run:                          3
-Apr 09, 2025 5:04:31 PM liquibase.util
-INFO: Previously run:               3
-Apr 09, 2025 5:04:32 PM liquibase.util
+Apr 10, 2025 12:20:19 AM liquibase.util
+INFO: Run:                          6
+Apr 10, 2025 12:20:19 AM liquibase.util
+INFO: Previously run:               0
+Apr 10, 2025 12:20:19 AM liquibase.util
 INFO: Filtered out:                 0
-Apr 09, 2025 5:04:32 PM liquibase.util
+Apr 10, 2025 12:20:19 AM liquibase.util
 INFO: -------------------------------
-Apr 09, 2025 5:04:32 PM liquibase.util
+Apr 10, 2025 12:20:19 AM liquibase.util
 INFO: Total change sets:            6
-Apr 09, 2025 5:04:32 PM liquibase.util
+Apr 10, 2025 12:20:19 AM liquibase.util
 INFO: Update summary generated
-Apr 09, 2025 5:04:32 PM liquibase.command
+Apr 10, 2025 12:20:19 AM liquibase.command
 INFO: Update command completed successfully.
-Liquibase: Update has been successful. Rows affected: 3
-Apr 09, 2025 5:04:32 PM liquibase.lockservice
+Liquibase: Update has been successful. Rows affected: 10
+Apr 10, 2025 12:20:19 AM liquibase.lockservice
 INFO: Successfully released change log lock
-Apr 09, 2025 5:04:32 PM liquibase.command
+Apr 10, 2025 12:20:19 AM liquibase.command
 INFO: Command execution complete

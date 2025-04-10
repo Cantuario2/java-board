@@ -11,23 +11,25 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 import static edu.cantuario2.persistence.config.ConnConfig.getConnection;
 
 @AllArgsConstructor
 public class MigrationStrategy {
+    private static final Logger logger = Logger.getLogger(MigrationStrategy.class.getName());
 
-    private final Connection connection;
+    private final Connection conn;
 
     public void executeMigration() {
-        var originalOut = System.out;
-        var originalErr = System.err;
-        try (var fos = new FileOutputStream("liquibase.log")) {
+        PrintStream originalOut = System.out;
+        PrintStream originalErr = System.err;
+        try (FileOutputStream fos = new FileOutputStream("liquibase.log")) {
             System.setOut(new PrintStream(fos));
             System.setErr(new PrintStream(fos));
             try (
-                    var connection = getConnection();
-                    var jdbcConnection = new JdbcConnection(connection);
+                    Connection connection = getConnection();
+                    JdbcConnection jdbcConnection = new JdbcConnection(connection)
             ) {
                 var liquibase = new Liquibase(
                         "/db/changelog/db.changelog-master.yml",
@@ -35,11 +37,13 @@ public class MigrationStrategy {
                         jdbcConnection);
                 liquibase.update();
             } catch (SQLException | LiquibaseException e) {
-                e.printStackTrace();
+                logger.severe(String.format("Error in %s - %s:", this.getClass().getName(), "executeMigration method"));
+                logger.severe(e.toString());
                 System.setErr(originalErr);
             }
         } catch (IOException ex) {
-            ex.printStackTrace();
+            logger.severe(String.format("Error in %s - %s:", this.getClass().getName(), "executeMigration method"));
+            logger.severe(ex.toString());
         } finally {
             System.setOut(originalOut);
             System.setErr(originalErr);
