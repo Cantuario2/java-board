@@ -1,6 +1,7 @@
 package edu.cantuario2.persistence.dao;
 
 import com.mysql.cj.jdbc.StatementImpl;
+import edu.cantuario2.dto.BoardColumnDTO;
 import edu.cantuario2.persistence.entity.BoardColumnEntity;
 import edu.cantuario2.persistence.entity.BoardColumnKindEnum;
 import edu.cantuario2.persistence.entity.BoardEntity;
@@ -58,6 +59,35 @@ public class BoardColumnDAO {
                 boardColumns.add(boardColumn);
             }
             return boardColumns;
+        }
+    }
+
+    public List<BoardColumnDTO> findByBoardIdDetailed(final Long id) throws SQLException {
+        List<BoardColumnDTO> boardColumnDTOS = new ArrayList<>();
+        try (PreparedStatement statement = conn.prepareStatement(
+                "SELECT bc.id,bc.name,bc.kind,(SELECT COUNT(c.id) FROM cards c WHERE c.board_column_id = bc.id) as cards_amount FROM boards_columns bc WHERE board_id=? ORDER BY bc.at_order ASC"
+        )) {
+            statement.setLong(1, id);
+            statement.executeQuery();
+            ResultSet resultSet = statement.getResultSet();
+            while (resultSet.next()) {
+                BoardColumnDTO bcDTO = new BoardColumnDTO(
+                        resultSet.getLong("bc.id"),
+                        resultSet.getString("bc.name"),
+                        BoardColumnKindEnum.findByName(resultSet.getString("bc.kind")),
+                        resultSet.getInt("cards_amount")
+                );
+                boardColumnDTOS.add(bcDTO);
+
+//                BoardDAO boardDao = new BoardDAO(conn);
+//                Optional<BoardEntity> board = boardDao.findById(id);
+//                if (board.isPresent()) {
+//                    BoardEntity boardOfColumn = board.get();
+//                    boardColumn.setBoard(boardOfColumn);
+//                }
+//                boardColumns.add(boardColumn);
+            }
+            return boardColumnDTOS;
         }
     }
 }

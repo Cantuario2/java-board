@@ -81,7 +81,13 @@ public class MainMenu {
         try (Connection conn = getConnection()) {
             BoardQueryService queryService = new BoardQueryService(conn);
             Optional<BoardEntity> optionalBoardEntity = queryService.findById(id);
-            optionalBoardEntity.ifPresentOrElse(bm -> new BoardMenu(bm).execute(), () -> System.out.printf("Não foi encontrado um board com o id %s\n", id));
+            optionalBoardEntity.ifPresentOrElse(bm -> {
+                try {
+                    new BoardMenu(bm).execute();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }, () -> System.out.printf("Não foi encontrado um board com o id %s\n", id));
         }
     }
 
