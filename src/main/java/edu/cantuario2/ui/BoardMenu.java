@@ -1,8 +1,8 @@
 package edu.cantuario2.ui;
 
+import edu.cantuario2.dto.BoardColumnInfoDTO;
 import edu.cantuario2.dto.BoardDetailDTO;
 import edu.cantuario2.persistence.entity.BoardColumnEntity;
-import edu.cantuario2.persistence.entity.BoardColumnKindEnum;
 import edu.cantuario2.persistence.entity.BoardEntity;
 import edu.cantuario2.persistence.entity.CardEntity;
 import edu.cantuario2.service.BoardColumnQueryService;
@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 
 import static edu.cantuario2.persistence.config.ConnConfig.getConnection;
 
@@ -26,7 +27,7 @@ public class BoardMenu {
     private static final Logger logger = Logger.getLogger(BoardMenu.class.getName());
 
     public void execute() throws SQLException {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in).useDelimiter("\n");
         System.out.printf("Board Menu - %s - Opções:", board.getName());
         int option = -1;
         while (true) {
@@ -43,7 +44,7 @@ public class BoardMenu {
             option = scanner.nextInt();
             switch (option) {
                 case 1 -> createCard(scanner);
-                case 2 -> moveCard();
+                case 2 -> moveCard(scanner);
                 case 3 -> blockCard();
                 case 4 -> unlockCard();
                 case 5 -> cancelCard();
@@ -72,7 +73,18 @@ public class BoardMenu {
         }
     }
 
-    private void moveCard() {
+    private void moveCard(Scanner scanner) {
+        System.out.println("\nInforme o id do card que deseja mover para a próxima coluna: ");
+        Long cardId = scanner.nextLong();
+        try (Connection conn = getConnection()) {
+            List<BoardColumnInfoDTO> boardColumnInfoDTOS = board.getBoardColumns().stream()
+                    .map(bc -> new BoardColumnInfoDTO(bc.getId(), bc.getAtOrder(), bc.getKind()))
+                    .toList();
+            new CardService(conn).moveToNextColumn(cardId, boardColumnInfoDTOS);
+        } catch (SQLException e) {
+            logger.severe(String.format("Error in %s - %s:", this.getClass().getName(), "moveCard method"));
+            logger.severe(e.toString());
+        }
     }
 
     private void blockCard() {

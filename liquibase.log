@@ -1,19 +1,19 @@
-Apr 12, 2025 11:46:53 AM liquibase.changelog
+Apr 12, 2025 1:26:02 PM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202504082221.sql
-Apr 12, 2025 11:46:54 AM liquibase.changelog
+Apr 12, 2025 1:26:02 PM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202504082250.sql
-Apr 12, 2025 11:46:54 AM liquibase.changelog
+Apr 12, 2025 1:26:02 PM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202504082332.sql
-Apr 12, 2025 11:46:54 AM liquibase.changelog
+Apr 12, 2025 1:26:02 PM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202504091641.sql
-Apr 12, 2025 11:46:54 AM liquibase.changelog
+Apr 12, 2025 1:26:02 PM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202504091654.sql
-Apr 12, 2025 11:46:54 AM liquibase.changelog
+Apr 12, 2025 1:26:02 PM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202504091657.sql
-Apr 12, 2025 11:46:54 AM liquibase.changelog
+Apr 12, 2025 1:26:02 PM liquibase.changelog
 INFO: Reading from board_db.DATABASECHANGELOG
 Database is up to date, no changesets to execute
-Apr 12, 2025 11:46:54 AM liquibase.changelog
+Apr 12, 2025 1:26:02 PM liquibase.changelog
 INFO: Reading from board_db.DATABASECHANGELOG
 
 UPDATE SUMMARY
@@ -23,21 +23,21 @@ Filtered out:                 0
 -------------------------------
 Total change sets:            6
 
-Apr 12, 2025 11:46:54 AM liquibase.util
+Apr 12, 2025 1:26:02 PM liquibase.util
 INFO: UPDATE SUMMARY
-Apr 12, 2025 11:46:54 AM liquibase.util
+Apr 12, 2025 1:26:02 PM liquibase.util
 INFO: Run:                          0
-Apr 12, 2025 11:46:54 AM liquibase.util
+Apr 12, 2025 1:26:02 PM liquibase.util
 INFO: Previously run:               6
-Apr 12, 2025 11:46:54 AM liquibase.util
+Apr 12, 2025 1:26:02 PM liquibase.util
 INFO: Filtered out:                 0
-Apr 12, 2025 11:46:54 AM liquibase.util
+Apr 12, 2025 1:26:02 PM liquibase.util
 INFO: -------------------------------
-Apr 12, 2025 11:46:54 AM liquibase.util
+Apr 12, 2025 1:26:02 PM liquibase.util
 INFO: Total change sets:            6
-Apr 12, 2025 11:46:54 AM liquibase.util
+Apr 12, 2025 1:26:02 PM liquibase.util
 INFO: Update summary generated
-Apr 12, 2025 11:46:54 AM liquibase.lockservice
+Apr 12, 2025 1:26:03 PM liquibase.lockservice
 INFO: Successfully released change log lock
-Apr 12, 2025 11:46:54 AM liquibase.command
+Apr 12, 2025 1:26:03 PM liquibase.command
 INFO: Command execution complete

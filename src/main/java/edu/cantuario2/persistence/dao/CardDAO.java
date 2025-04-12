@@ -83,4 +83,20 @@ public class CardDAO {
         }
         return Optional.empty();
     }
+
+    public void moveToColumn(final Long columnId, final Long cardId) throws SQLException {
+        try (
+                PreparedStatement statement = conn.prepareStatement(
+                        "UPDATE cards SET board_column_id=? WHERE id=?"
+                )
+        ) {
+            statement.setLong(1, columnId);
+            statement.setLong(2, cardId);
+            statement.executeUpdate();
+            conn.commit();
+        } catch (SQLException e) {
+            logger.severe(String.format("Error in %s - %s:", this.getClass().getName(), "delete method"));
+            logger.severe(e.toString());
+        }
+    }
 }
