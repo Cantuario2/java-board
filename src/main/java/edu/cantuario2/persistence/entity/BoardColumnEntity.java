@@ -6,7 +6,7 @@ import lombok.Data;
 public class BoardColumnEntity {
     private Long id;
     private String name;
-    private int order;
+    private int atOrder;
     private BoardColumnKindEnum kind;
     private BoardEntity board = new BoardEntity();
 }

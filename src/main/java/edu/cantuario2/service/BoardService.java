@@ -21,8 +21,11 @@ public class BoardService {
         BoardColumnDAO boardColumnDAO = new BoardColumnDAO(conn);
         try {
             boardDao.insert(board);
-            List<BoardColumnEntity> columns = board.getBoardColumns().stream().peek(
-                    c -> c.setBoard(board)
+            List<BoardColumnEntity> columns = board.getBoardColumns().stream().map(
+                    c -> {
+                        c.setBoard(board);
+                        return c;
+                    }
             ).toList();
             for (var column : columns) {
                 boardColumnDAO.insert(column);

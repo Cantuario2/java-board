@@ -20,10 +20,10 @@ public class MainMenu {
 
     public void execute() throws SQLException {
         System.out.println("\n::Gerenciador de Boards ::");
-        System.out.println("\nEscolha uma opção:");
+        System.out.println("Escolha uma opção:");
         int option = -1;
         while (true) {
-            System.out.println("1 - Criar um novo board");
+            System.out.println("\n1 - Criar um novo board");
             System.out.println("2 - Selecionar um board existente");
             System.out.println("3 - Excluir um board");
             System.out.println("4 - Sair");
@@ -65,7 +65,7 @@ public class MainMenu {
 
         System.out.println("Infomre o nome da coluna de cancelamento do board");
         String cancelColumnName = scanner.next();
-        BoardColumnEntity cancelColumn = createColumn(cancelColumnName, BoardColumnKindEnum.CANCEL, additionalColumns + 1);
+        BoardColumnEntity cancelColumn = createColumn(cancelColumnName, BoardColumnKindEnum.CANCEL, additionalColumns + 2);
         columns.add(cancelColumn);
 
         board.setBoardColumns(columns);
@@ -102,7 +102,7 @@ public class MainMenu {
         BoardColumnEntity boardColumn = new BoardColumnEntity();
         boardColumn.setName(name);
         boardColumn.setKind(kindEnum);
-        boardColumn.setOrder(order);
+        boardColumn.setAtOrder(order);
         return boardColumn;
     }
 }

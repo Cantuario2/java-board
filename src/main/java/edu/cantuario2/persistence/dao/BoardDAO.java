@@ -19,7 +19,7 @@ public class BoardDAO {
     public void insert(final BoardEntity board) throws SQLException {
         try (
                 PreparedStatement statement = conn.prepareStatement(
-                        "INSERT INTO BOARDS (name) VALUES (?)"
+                        "INSERT INTO boards (name) VALUES (?)"
                 )
         ) {
             statement.setString(1, board.getName());
@@ -27,6 +27,7 @@ public class BoardDAO {
             if (statement instanceof StatementImpl impl) {
                 board.setId(impl.getLastInsertID());
             }
+            conn.commit();
         } catch (SQLException e) {
             logger.severe(String.format("Error in %s - %s:", this.getClass().getName(), "insert method"));
             logger.severe(e.toString());
@@ -36,11 +37,12 @@ public class BoardDAO {
     public void delete(final Long id) throws SQLException {
         try (
                 PreparedStatement statement = conn.prepareStatement(
-                        "DELETE FROM BOARDS WHERE id=?"
+                        "DELETE FROM boards WHERE id=?"
                 )
         ) {
             statement.setLong(1, id);
             statement.executeUpdate();
+            conn.commit();
         } catch (SQLException e) {
             logger.severe(String.format("Error in %s - %s:", this.getClass().getName(), "delete method"));
             logger.severe(e.toString());
@@ -50,7 +52,7 @@ public class BoardDAO {
     public Optional<BoardEntity> findById(final Long id) throws SQLException {
         try (
                 PreparedStatement statement = conn.prepareStatement(
-                        "SELECT id,name FROM BOARDS WHERE id=?"
+                        "SELECT id,name FROM boards WHERE id=?"
                 )
         ) {
             statement.setLong(1, id);
@@ -59,7 +61,7 @@ public class BoardDAO {
             if (resultSet.next()) {
                 BoardEntity board = new BoardEntity();
                 board.setId(resultSet.getLong("id"));
-                board.setName(resultSet.getNString("name"));
+                board.setName(resultSet.getString("name"));
                 return Optional.of(board);
             }
             return Optional.empty();
@@ -74,7 +76,7 @@ public class BoardDAO {
 
         try (
                 PreparedStatement statement = conn.prepareStatement(
-                        "SELECT 1 FROM BOARDS WHERE id=?"
+                        "SELECT 1 FROM boards WHERE id=?"
                 )
         ) {
             statement.setLong(1, id);
