@@ -3,5 +3,5 @@
 
 Repositório do Projeto Board de Tarefas do curso "Criando seu Board de Tarefas com Java".
 
-cantuario2 - 08/04/2025
-### Rev. 00
+cantuario2 - 12/04/2025
+### Rev. 01
