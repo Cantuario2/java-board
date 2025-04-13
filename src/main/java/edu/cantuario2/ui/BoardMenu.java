@@ -45,9 +45,9 @@ public class BoardMenu {
             switch (option) {
                 case 1 -> createCard(scanner);
                 case 2 -> moveCard(scanner);
-                case 3 -> blockCard();
-                case 4 -> unlockCard();
-                case 5 -> cancelCard();
+                case 3 -> blockCard(scanner);
+                case 4 -> unlockCard(scanner);
+                case 5 -> cancelCard(scanner);
                 case 6 -> showBoard();
                 case 7 -> showColumn(scanner);
                 case 8 -> showCard(scanner);
@@ -87,13 +87,48 @@ public class BoardMenu {
         }
     }
 
-    private void blockCard() {
+    private void blockCard(Scanner scanner) {
+        System.out.println("\nInforme o id do card que deseja bloquear: ");
+        Long cardId = scanner.nextLong();
+        System.out.println("\nInforme o motivo do cancelamento: ");
+        String reason = scanner.next();
+        List<BoardColumnInfoDTO> boardColumnInfoDTOS = board.getBoardColumns().stream()
+                .map(bc -> new BoardColumnInfoDTO(bc.getId(), bc.getAtOrder(), bc.getKind()))
+                .toList();
+        try (Connection conn = getConnection()) {
+            new CardService(conn).blockCard(cardId, reason, boardColumnInfoDTOS);
+        } catch (SQLException e) {
+            logger.severe(String.format("Error in %s - %s:", this.getClass().getName(), "showBoard method"));
+            logger.severe(e.toString());
+        }
     }
 
-    private void unlockCard() {
+    private void unlockCard(Scanner scanner) {
+        System.out.println("\nInforme o id do card que deseja desbloquear: ");
+        Long cardId = scanner.nextLong();
+        System.out.println("\nInforme o motivo do desbloqueio: ");
+        String reason = scanner.next();
+        try (Connection conn = getConnection()) {
+            new CardService(conn).unlockCard(cardId, reason);
+        } catch (SQLException e) {
+            logger.severe(String.format("Error in %s - %s:", this.getClass().getName(), "unlockCard method"));
+            logger.severe(e.toString());
+        }
     }
 
-    private void cancelCard() {
+    private void cancelCard(Scanner scanner) {
+        System.out.println("\nInforme o id do card que deseja cancelar: ");
+        Long cardId = scanner.nextLong();
+        BoardColumnEntity camcelColumn = board.getCancelColumn();
+        List<BoardColumnInfoDTO> boardColumnInfoDTOS = board.getBoardColumns().stream()
+                .map(bc -> new BoardColumnInfoDTO(bc.getId(), bc.getAtOrder(), bc.getKind()))
+                .toList();
+        try (Connection conn = getConnection()) {
+            new CardService(conn).cancel(cardId, camcelColumn.getId(), boardColumnInfoDTOS);
+        } catch (SQLException e) {
+            logger.severe(String.format("Error in %s - %s:", this.getClass().getName(), "cancelCard method"));
+            logger.severe(e.toString());
+        }
     }
 
     private void showBoard() {
@@ -114,7 +149,7 @@ public class BoardMenu {
     private void showColumn(Scanner scanner) throws SQLException {
         System.out.printf("\nEscolha uma coluna do board %s:", board.getName());
         List<Long> columnsIds = board.getBoardColumns().stream().map(BoardColumnEntity::getId).toList();
-        Long selectedColumn = -1L;
+        long selectedColumn = -1L;
         while (!columnsIds.contains(selectedColumn)) {
             board.getBoardColumns().forEach(c -> System.out.printf("\n%s - %s [%s]", c.getId(), c.getName(), c.getKind()));
             selectedColumn = scanner.nextLong();

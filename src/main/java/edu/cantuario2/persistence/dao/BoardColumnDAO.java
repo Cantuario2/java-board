@@ -126,8 +126,8 @@ public class BoardColumnDAO {
                     card.setTitle(resultSet.getString("c.title"));
                     card.setDescription(resultSet.getString("c.description"));
                     boardColumn.getCards().add(card);
-                    return Optional.of(boardColumn);
                 } while (resultSet.next());
+                return Optional.of(boardColumn);
             }
             return Optional.empty();
         }

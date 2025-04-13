@@ -1,43 +1,34 @@
-Apr 12, 2025 1:26:02 PM liquibase.changelog
+Apr 12, 2025 9:39:25 PM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202504082221.sql
-Apr 12, 2025 1:26:02 PM liquibase.changelog
+Apr 12, 2025 9:39:25 PM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202504082250.sql
-Apr 12, 2025 1:26:02 PM liquibase.changelog
+Apr 12, 2025 9:39:25 PM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202504082332.sql
-Apr 12, 2025 1:26:02 PM liquibase.changelog
+Apr 12, 2025 9:39:25 PM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202504091641.sql
-Apr 12, 2025 1:26:02 PM liquibase.changelog
+Apr 12, 2025 9:39:25 PM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202504091654.sql
-Apr 12, 2025 1:26:02 PM liquibase.changelog
+Apr 12, 2025 9:39:25 PM liquibase.changelog
 INFO: Reading resource: db/changelog/migrations/db.changelog-202504091657.sql
-Apr 12, 2025 1:26:02 PM liquibase.changelog
+Apr 12, 2025 9:39:25 PM liquibase.changelog
 INFO: Reading from board_db.DATABASECHANGELOG
-Database is up to date, no changesets to execute
-Apr 12, 2025 1:26:02 PM liquibase.changelog
-INFO: Reading from board_db.DATABASECHANGELOG
+Apr 12, 2025 9:39:25 PM liquibase.changelog
+INFO: Change failed validation!
+Apr 12, 2025 9:39:25 PM liquibase.command
+INFO: Logging exception.
+ERROR: Exception Details
+ERROR: Exception Primary Class:  ValidationFailedException
+ERROR: Exception Primary Reason:  Validation Failed:
+     1 changesets check sum
+          db/changelog/migrations/db.changelog-202504091657.sql::202504091641::Cantuario2 was: 9:f2c34f37801e729dd7119f25a376f881 but is now: 9:efcfacbf776a63a421aea7649f3642bc
 
-UPDATE SUMMARY
-Run:                          0
-Previously run:               6
-Filtered out:                 0
--------------------------------
-Total change sets:            6
-
-Apr 12, 2025 1:26:02 PM liquibase.util
-INFO: UPDATE SUMMARY
-Apr 12, 2025 1:26:02 PM liquibase.util
-INFO: Run:                          0
-Apr 12, 2025 1:26:02 PM liquibase.util
-INFO: Previously run:               6
-Apr 12, 2025 1:26:02 PM liquibase.util
-INFO: Filtered out:                 0
-Apr 12, 2025 1:26:02 PM liquibase.util
-INFO: -------------------------------
-Apr 12, 2025 1:26:02 PM liquibase.util
-INFO: Total change sets:            6
-Apr 12, 2025 1:26:02 PM liquibase.util
-INFO: Update summary generated
-Apr 12, 2025 1:26:03 PM liquibase.lockservice
-INFO: Successfully released change log lock
-Apr 12, 2025 1:26:03 PM liquibase.command
+ERROR: Exception Primary Source:  4.29.1
+Apr 12, 2025 9:39:25 PM liquibase.command
 INFO: Command execution complete
+Apr 12, 2025 9:39:25 PM edu.cantuario2.persistence.migration.MigrationStrategy executeMigration
+SEVERE: Error in edu.cantuario2.persistence.migration.MigrationStrategy - executeMigration method:
+Apr 12, 2025 9:39:25 PM edu.cantuario2.persistence.migration.MigrationStrategy executeMigration
+SEVERE: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          db/changelog/migrations/db.changelog-202504091657.sql::202504091641::Cantuario2 was: 9:f2c34f37801e729dd7119f25a376f881 but is now: 9:efcfacbf776a63a421aea7649f3642bc
+

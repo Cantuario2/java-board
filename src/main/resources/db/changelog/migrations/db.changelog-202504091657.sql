@@ -7,7 +7,7 @@ CREATE TABLE blocks(
     blocked_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     block_reason VARCHAR(200) NOT NULL,
     unlocked_at TIMESTAMP NULL,
-    unlock_reason VARCHAR(200) NOT NULL,
+    unlock_reason VARCHAR(200) NULL,
     card_id BIGINT NOT NULL,
     CONSTRAINT fk_cards_blocks FOREIGN KEY (card_id) REFERENCES cards (id) ON DELETE CASCADE
 )ENGINE=InnoDB;
